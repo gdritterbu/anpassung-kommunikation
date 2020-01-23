@@ -41,3 +41,7 @@ In der ersten User-Task gibt der Nutzer über ein Formular die nötigen Daten de
 Der vorher eingegebene Termin wird mittels einer Business Rule Task ausgewertet. Falls die Daten valide sind und der Termin zur Verfügung steht, wird als Terminmöglichkeit `true` zurückgegeben. Im Falle, dass Konflikte mit Kernarbeitszeiten, Pausen oder regelmäßigen Terminen entstehen, ist der Termin nicht möglich und der Output ist `false`.
 
 ![Termin prüfen](/images/dmn_table.PNG "Termin prüfen")
+
+Diese Outputs werden in einem XOR-Gateway ausgewertet, [siehe BPMN-Diagramm](https://github.com/gdritterbu/anpassung-kommunikation#bpmn-diagramm). Wenn ein freier Termin zur Verfügung steht schreitet der Prozess fort, andernfalls scheitert er.
+
+![Terminverfügbarkeit](/images/sequent_flow_1_positive.PNG "Termin verfügbar") ![Termin prüfen](/images/sequent_flow_1_negative.PNG "Termin nicht verfügbar")

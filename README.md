@@ -45,3 +45,9 @@ Der vorher eingegebene Termin wird mittels einer Business Rule Task ausgewertet.
 Diese Outputs werden in einem XOR-Gateway ausgewertet, [siehe BPMN-Diagramm](#bpmn-diagramm). Wenn ein freier Termin zur Verfügung steht schreitet der Prozess fort, andernfalls scheitert er.
 
 ![Terminverfügbarkeit](/images/sequent_flow_1_positive.PNG "Termin verfügbar") ![Termin prüfen](/images/sequent_flow_1_negative.PNG "Termin nicht verfügbar")
+
+### User-Task - Teilnehmer hinzufügen
+
+Nun kann ein Teilnehmer zum Termin hinzugefügt werden. Hierbei werden wieder in einem Formular die Daten des Teilnehmers eingegeben, damit diese im darauffolgenden Schritt überprüft werden können. Der Name ist für diese Überprüfung essentiell und die E-Mail-Adresse wird für das spätere Ausstellen des Terminvorschlages benötigt.
+
+![Teilnehmer hinzufügen](/images/add_participant.PNG "Teilnehmer hinzufügen")

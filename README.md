@@ -29,13 +29,15 @@ Ein wichtiger Aspekt der im Projekt aufgenommen wurde, war die Terminverwaltung.
 
 Zunächst soll ein Mitarbeiter des Unternehmens einen potentiellen Termin eingeben **(User-Task)**, welcher dann überprüft wird **(Business-Rule-Task)**. Ist der Termin verfügbar, kann der Teilnehmer von einem Mitarbeiter hinzugefügt werden **(User-Task)**. Im Falle, dass der Termin zeitlich nicht möglich ist, endet der Prozess. Nachdem der Teilnehmer hinzugefügt wurde, wird überprüft ob dieser im System vorhanden ist **(Service-Task)**. Ist er präsent, kann der Terminvorschlag versendet werden **(Send-Task)**. Andernfalls scheitert der Prozess und die Terminerstellung ist gescheitert.
 
-![BPMN "Terminerstellung mit externen Teilnehmern”](/images/terminerstellung_extern_atomar.svg)
+![BPMN "Terminerstellung mit externen Teilnehmern”](/images/terminerstellung_extern_atomar.svg "BPMN-Diagramm Terminerstellung mit externen Teilnehmern")
 
 ## Technische Umsetzung
 ### User-Task - Termin eingeben
-
 In der ersten User-Task gibt der Nutzer über ein Formular die nötigen Daten des gewünschten Termins ein. Dabei werden Inputs, welche für das DMN-Diagramm des nächsten Schrittes notwendig sind, erhoben. Diese sind **Wochentag** `Typ: long`, **Beginn** `Typ: long` und **Dauer_in_Minuten** `Typ: long`.
 
-![Termin eingeben](/images/enter_date.PNG)
+![Termin eingeben](/images/enter_date.PNG "Termin eingeben")
 
 ### Business-Rule-Task (DMN) - Termin prüfen
+Der vorher eingegebene Termin wird mittels einer Business Rule Task ausgewertet. Falls die Daten valide sind und der Termin zur Verfügung steht, wird als Terminmöglichkeit `true` zurückgegeben. Im Falle, dass Konflikte mit Kernarbeitszeiten, Pausen oder regelmäßigen Terminen entstehen, ist der Termin nicht möglich und der Output ist `false`.
+
+![Termin prüfen](/images/dmn_table.PNG "Termin prüfen")

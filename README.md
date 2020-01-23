@@ -75,3 +75,7 @@ Das soll die Auswertung der Response im nächsten XOR-Gateway (“Name vorhanden
 An letzter Stelle können wir dem Teilnehmer im idealen Fall den Terminvorschlag per E-Mail senden. Dieser Prozess wird mithilfe eines **Mail-Send-Connectors** abgewickelt, der von [Camunda](https://github.com/camunda/camunda-bpm-mail) direkt angeboten wird. Dazu mussten wir die nötigen `.jar-Dateien` aus der Dokumentation entnehmen und zu den Bibliotheken hinzufügen. Außerdem war das Hinzufügen einer `mail-config.properties` Datei und eine Anpassung der Start-Datei zwingend erforderlich. Die nötigen Input-Parameter sind unter anderem ein **Adressat**, den wir aus dem vorherigen Formular entnehmen `${Mail}` aus [Teilnehmer hinzufügen](#user-task---teilnehmer-hinzufügen). Weiterhin werden ein Betreff `Typ: Text` und der Inhalt der E-Mail `Typ: Text` benötigt. Sind alle Anforderungen erfüllt, kann die E-Mail versendet werden und der Nutzer erhält die Nachricht mit seinem Terminvorschlag, wodurch der Prozess erfolgreich beendet wird.
 
 ![Termin versenden](/images/send_appointment.PNG "Termin versenden")
+
+___
+
+_Diese Dokumentation ist Teil einer Projektarbeit im Rahmen der Veranstaltung “Auswahl und Anpassung von IT-Diensten” unter der Leitung von Frau Prof. Meister an der Technischen Hochschule Brandenburg._

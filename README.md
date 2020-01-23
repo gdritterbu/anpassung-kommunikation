@@ -27,6 +27,15 @@ Des Weiteren wurden folgende Maven-Dependencies (`.jar-Dateien`) als Bibliotheke
 ## BPMN-Diagramm
 Ein wichtiger Aspekt der im Projekt aufgenommen wurde, war die Terminverwaltung. Der Prozess “Terminerstellung mit externen Teilnehmern” wurde daher exemplarisch ausgewählt. Für die Modellierung dieses Prozesses wurde der [Camunda Modeler](https://camunda.com/de/products/modeler/) verwendet.
 
-Zunächst soll ein Mitarbeiter des Unternehmens einen potentiellen Termin eingeben **(User Task)**, welcher dann überprüft wird **(Business-Rule-Task)**. Ist der Termin verfügbar, kann der Teilnehmer von einem Mitarbeiter hinzugefügt werden **(User Task)**. Im Falle, dass der Termin zeitlich nicht möglich ist, endet der Prozess. Nachdem der Teilnehmer hinzugefügt wurde, wird überprüft ob dieser im System vorhanden ist **(Service-Task)**. Ist er präsent, kann der Terminvorschlag versendet werden **(Send-Task)**. Andernfalls scheitert der Prozess und die Terminerstellung ist gescheitert.
+Zunächst soll ein Mitarbeiter des Unternehmens einen potentiellen Termin eingeben **(User-Task)**, welcher dann überprüft wird **(Business-Rule-Task)**. Ist der Termin verfügbar, kann der Teilnehmer von einem Mitarbeiter hinzugefügt werden **(User-Task)**. Im Falle, dass der Termin zeitlich nicht möglich ist, endet der Prozess. Nachdem der Teilnehmer hinzugefügt wurde, wird überprüft ob dieser im System vorhanden ist **(Service-Task)**. Ist er präsent, kann der Terminvorschlag versendet werden **(Send-Task)**. Andernfalls scheitert der Prozess und die Terminerstellung ist gescheitert.
 
+![BPMN "Terminerstellung mit externen Teilnehmern”](/images/terminerstellung_extern_atomar.svg)
 
+## Technische Umsetzung
+### User-Task - Termin eingeben
+
+In der ersten User-Task gibt der Nutzer über ein Formular die nötigen Daten des gewünschten Termins ein. Dabei werden Inputs, welche für das DMN-Diagramm des nächsten Schrittes notwendig sind, erhoben. Diese sind **Wochentag** `Typ: long`, **Beginn** `Typ: long` und **Dauer_in_Minuten** `Typ: long`.
+
+![Termin eingeben](/images/enter_date.PNG)
+
+### Business-Rule-Task (DMN) - Termin prüfen

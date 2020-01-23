@@ -16,7 +16,7 @@ Für die technische Implementierung der Service-Orchestrierung wurden folgende T
 - [Genderize API](https://genderize.io/) (Überprüfung eines Nutzers)
 - [Postman](https://www.getpostman.com/) (API Testing)
 - [Visual Studio Code](https://code.visualstudio.com/) (Code Editor)
-- [camunda-bpm-mail](https://github.com/camunda/camunda-bpm-mail)(Connector zur Versendung von E-Mails)
+- [camunda-bpm-mail](https://github.com/camunda/camunda-bpm-mail) (Connector zur Versendung von E-Mails)
 
 Des Weiteren wurden folgende Maven-Dependencies (`.jar-Dateien`) als Bibliothekerweiterungen verwendet:
 - [Camunda BPM Connect Core](https://mvnrepository.com/artifact/org.camunda.connect/camunda-connect-core/1.0.3)

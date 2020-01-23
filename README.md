@@ -51,3 +51,24 @@ Diese Outputs werden in einem XOR-Gateway ausgewertet, [siehe BPMN-Diagramm](#bp
 Nun kann ein Teilnehmer zum Termin hinzugefügt werden. Hierbei werden wieder in einem Formular die Daten des Teilnehmers eingegeben, damit diese im darauffolgenden Schritt überprüft werden können. Der Name ist für diese Überprüfung essentiell und die E-Mail-Adresse wird für das spätere Ausstellen des Terminvorschlages benötigt.
 
 ![Teilnehmer hinzufügen](/images/add_participant.PNG "Teilnehmer hinzufügen")
+
+### Service-Task - Teilnehmer in Datenbank überprüfen
+
+Um das Vorhandensein des soeben hinzugefügten Teilnehmers in unserem System zu überprüfen, verwenden wir eine Service-Task. Diese Service-Task führt einen GET-Request an eine externe API mithilfe eines Connectors aus. Als Parameter sind hierbei die Methode `GET` bei GET-Requests, die URL `https://genderize.io/?name=${Name}` und die Headers `content-Type: application/json` nötig. Ist der Request erfolgreich, erhalten wir den Output in dem Parameter `Pruefung`. Dieses JSON-Response werten wir mithilfe von einem **Javascript-Inline-Script** aus, sodass nicht der gesamte Block, sondern nur ein Boolean-Wert zurückgegeben wird.
+```javascript
+var json = S(response);
+var gender = json.prop("gender").value();
+
+if (gender == "male" ) {
+    var bool = true;
+} else if (gender == "female") {
+    var bool = true;
+} else {
+    var bool = false;
+}
+
+bool;
+```
+Das soll die Auswertung der Response im nächsten XOR-Gateway (“Name vorhanden?”) erleichtern. Ist der Teilnehmer schon im System vorhanden, kann der Terminvorschlag per E-Mail versendet werden. Kriegen wir als Reponse wiederum “null”, ist die Terminerstellung gescheitert und der Prozess endet.
+
+![Name vorhanden](/images/sequent_flow_2_positive.PNG "Name vorhanden") ![Name nicht vorhanden](/images/sequent_flow_2_negative.PNG "Name nicht vorhanden")

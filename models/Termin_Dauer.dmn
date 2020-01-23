@@ -1,0 +1,728 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="Definitions_0awai3l" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.5.0">
+  <decision id="Decision_1e0udy5" name="Decision 1">
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="Wochentag">
+        <inputExpression id="inputExpression_1" typeRef="integer">
+          <text>Wochentag</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0wqile8" label="Beginn">
+        <inputExpression id="LiteralExpression_0jx0lgm" typeRef="double">
+          <text>Beginn</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_02zxsij" label="Dauer_in_Minuten">
+        <inputExpression id="LiteralExpression_1oy6b7s" typeRef="integer">
+          <text>Dauer_in_Minuten</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" name="Terminmöglichkeit" typeRef="boolean" />
+      <rule id="DecisionRule_01u2ckc">
+        <description>Kein Wochentag 0</description>
+        <inputEntry id="UnaryTests_0hgwdxk">
+          <text>0</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wl1ga4">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yme9tx">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o4g1nj">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ntf00f">
+        <description>Wochenende + Kein Wochentag über 7</description>
+        <inputEntry id="UnaryTests_1b6zdzq">
+          <text>&gt;= 6</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vhexdb">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1x9smh3">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0i5m3mx">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03gfxfl">
+        <description>Arbeitsbeginn um 8</description>
+        <inputEntry id="UnaryTests_1gf8pld">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gr5kgl">
+          <text>&lt; 8</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_196wpnu">
+          <text>&gt;= 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ytly9x">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tzyzpf">
+        <description>Termindauer zu kurz</description>
+        <inputEntry id="UnaryTests_1acn1ha">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rskech">
+          <text>[8..17.45]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11u16xm">
+          <text>&lt;=14</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0k8ba8t">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jiuf1b">
+        <description>Termin vor dem Frühstück</description>
+        <inputEntry id="UnaryTests_0pae2b0">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b662c3">
+          <text>8</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_061ptvl">
+          <text>[15..60]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ibma14">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08yio34">
+        <description>Kein Termin in der Pause</description>
+        <inputEntry id="UnaryTests_11l7tmz">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l1qte9">
+          <text>8</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bbrzoh">
+          <text>&gt;60</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gvc3jg">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0y6f6fn">
+        <description>Termin vor dem Frühstück</description>
+        <inputEntry id="UnaryTests_1x4l7ye">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g40cbg">
+          <text>]8..8.30]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n17wxc">
+          <text>[15..30]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_162etf0">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0f10mdi">
+        <description>Kein Termin in der Pause</description>
+        <inputEntry id="UnaryTests_195ollo">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vqk0pj">
+          <text>]8..8.30]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g5kdyw">
+          <text>&gt; 30</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09756lv">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rry3up">
+        <description>Termin vor dem Frühstück</description>
+        <inputEntry id="UnaryTests_0hwqxmy">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cwoei1">
+          <text>]8.30..8.45]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1eyjy7b">
+          <text>15</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1b17m8o">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_13lni0h">
+        <description>Kein Termin in der Pause</description>
+        <inputEntry id="UnaryTests_1dsztz6">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1frh773">
+          <text>]8.30..8.45]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_15xyiqq">
+          <text>&gt;15</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0t6wh9n">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ag27qi">
+        <description>Kein Termin in der Pause</description>
+        <inputEntry id="UnaryTests_0wr24ta">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1trzb8n">
+          <text>]8.45..9.3]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qp2g4s">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1o7l9ev">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hkzcrw">
+        <description>Temin am Vormittag</description>
+        <inputEntry id="UnaryTests_1cu3ce2">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1xto21n">
+          <text>]9.3..10]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sb2e8m">
+          <text>[15..120]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12hxf87">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ppxq13">
+        <description>Kein Termin länger als 2 Stunden</description>
+        <inputEntry id="UnaryTests_1kjvhss">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17593ue">
+          <text>]9.3..10]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12r5rhn">
+          <text>&gt;120</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ckhm40">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xzi74m">
+        <description>Termin am Vormittag</description>
+        <inputEntry id="UnaryTests_1gkglen">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0026ekg">
+          <text>]10..10.30]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_03j0rru">
+          <text>[15..90]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0paktj2">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17ye2g7">
+        <description>Kein Termin in der Pause</description>
+        <inputEntry id="UnaryTests_0cje5kf">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vyqses">
+          <text>]10..10.30]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1go46jy">
+          <text>&gt;90</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0stfbcm">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14d30jr">
+        <description>Termin am Vormittag</description>
+        <inputEntry id="UnaryTests_0kxi0zm">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hrfvve">
+          <text>]10.30..10.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_024eqiz">
+          <text>[15..60]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1l3aqfz">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1m3wxn2">
+        <description>Kein Termin in der Pause</description>
+        <inputEntry id="UnaryTests_141eht4">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yf8a6e">
+          <text>]10.30..10.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a56410">
+          <text>&gt;60</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0w3eujb">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0omdg28">
+        <description>Termin am Vormittag</description>
+        <inputEntry id="UnaryTests_0ylyl5u">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1p2bpd8">
+          <text>11</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k5tgzh">
+          <text>[15..60]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_019impu">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_09zx43q">
+        <description>Kein Termin in der Pause</description>
+        <inputEntry id="UnaryTests_19xohga">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0icq82e">
+          <text>11</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0octpys">
+          <text>&gt;60</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vk7xnb">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nyemqz">
+        <description>Diese Uhrzeit existiert nicht</description>
+        <inputEntry id="UnaryTests_1hvr1l3">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gsdt5z">
+          <text>[10.60..11[</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07uwxeo">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mmca8i">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0yf7ea3">
+        <description>Termin am Vormittag</description>
+        <inputEntry id="UnaryTests_0ha66pd">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13nycll">
+          <text>]11..11.30]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_05zqj79">
+          <text>[15..30]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gf99mm">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_01h4taj">
+        <description>Kein Termin in der Pause</description>
+        <inputEntry id="UnaryTests_09lnuoy">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jlnkfg">
+          <text>]11..11.30]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0isw6yz">
+          <text>&gt; 30</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09xuvp3">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kwybtt">
+        <description>Termin am Vormittag</description>
+        <inputEntry id="UnaryTests_1bkdjf5">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0asx8le">
+          <text>]11.3..11.45]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1pnz2ct">
+          <text>15</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12kwnx0">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s74d8m">
+        <description>Kein Termin in der Pause</description>
+        <inputEntry id="UnaryTests_055dkdt">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02gvzay">
+          <text>]11.3..11.45]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1omv6ag">
+          <text>&gt;15</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_036ny5d">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_00efe22">
+        <description>Kein Termin in der Pause</description>
+        <inputEntry id="UnaryTests_0jp6vqv">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tnc1io">
+          <text>]11.45..12]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b8qxfu">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1k687rl">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jdhh8n">
+        <description>Termin am Nachmittag</description>
+        <inputEntry id="UnaryTests_0x6flvf">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12pm9ce">
+          <text>]12..12.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qywvwo">
+          <text>[15..120]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03xibph">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10rythc">
+        <description>Kein Termin länger als 2 Stunden</description>
+        <inputEntry id="UnaryTests_1iaom61">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0j7uxq8">
+          <text>]12..12.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1cdr8q6">
+          <text>&gt;120</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17yx4p0">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_19wtql3">
+        <description>Uhrzeit existiert nicht</description>
+        <inputEntry id="UnaryTests_12jwwsx">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vq662e">
+          <text>[12.60..13[</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fhwtj2">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0auh5hy">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0mv7zfj">
+        <description>Termin am Nachmittag</description>
+        <inputEntry id="UnaryTests_0a2n543">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rrohx9">
+          <text>[13..13.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_10l8hi5">
+          <text>[15..120]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05f3u2q">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xt9ei7">
+        <description>Kein Termin länger als 2 Stunden</description>
+        <inputEntry id="UnaryTests_1thybil">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0eba66h">
+          <text>[13..13.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vmtuj7">
+          <text>&gt;120</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05gy0ne">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04126ny">
+        <description>Uhrzeit existiert nicht</description>
+        <inputEntry id="UnaryTests_1603r8r">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1smjevf">
+          <text>[13.60..14[</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1obkx9a">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ai5be1">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06nxmbg">
+        <description>Termin am Nachmittage</description>
+        <inputEntry id="UnaryTests_1j7jo5j">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_01pwezj">
+          <text>[14..14.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_076n5iu">
+          <text>[15..120]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_03b4ect">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mjd750">
+        <description>Kein Termin länger als 2 Stunden</description>
+        <inputEntry id="UnaryTests_03inn5g">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qkjj27">
+          <text>[14..14.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0wk26tr">
+          <text>&gt;120</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1edqafg">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wynsap">
+        <description>Uhrzeit existiert nicht</description>
+        <inputEntry id="UnaryTests_1yo1g55">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lwb44i">
+          <text>[14.60..15[</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1izvs5j">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_078fztk">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1iub3ki">
+        <description>Termin am Nachmittag</description>
+        <inputEntry id="UnaryTests_0q6wc5s">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rnvam7">
+          <text>[15..15.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ocjrme">
+          <text>[15..120]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_14fp23o">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1bq5n1m">
+        <description>Kein Termin länger als 2 Stunden</description>
+        <inputEntry id="UnaryTests_0p8azkh">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i7q8tt">
+          <text>[15..15.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0syv7m1">
+          <text>&gt;120</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wfnc64">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0090sx4">
+        <description>Uhrzeit existiert nicht</description>
+        <inputEntry id="UnaryTests_1cgcw41">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02rl1us">
+          <text>[15.60..16[</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lvm4br">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1w487ft">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17h735n">
+        <description>Termin am Nachmittag</description>
+        <inputEntry id="UnaryTests_1w6zojv">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0tsbbh0">
+          <text>[16..16.3]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ghim4k">
+          <text>[15..90]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1flct3r">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_192xle5">
+        <description>Feierabend</description>
+        <inputEntry id="UnaryTests_0w2nd4w">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_014dz1i">
+          <text>[16..16.3]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b9j1w3">
+          <text>&gt;90</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_161mi02">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0t193y7">
+        <description>Termin am Nachmittag</description>
+        <inputEntry id="UnaryTests_0wf3i1p">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_095rtqr">
+          <text>]16.3..16.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1g6jjo5">
+          <text>[15..60]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18j149r">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1nbg8r4">
+        <description>Feierabend</description>
+        <inputEntry id="UnaryTests_12yiytq">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_073vo2o">
+          <text>]16.3..16.59]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n77jeu">
+          <text>&gt;60</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1fj4bub">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1sjbroj">
+        <description>Uhrzeit existiert nicht</description>
+        <inputEntry id="UnaryTests_1l94p38">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17t2ydc">
+          <text>[16.60..17[</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nyg7rt">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fbac7p">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1grrk1m">
+        <description>Termin am Nachmittag</description>
+        <inputEntry id="UnaryTests_0nm3s3c">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gm3fs4">
+          <text>[17..17.30]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l20lmk">
+          <text>[15..30]</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0dm5tse">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kdewrz">
+        <description>Feierabend</description>
+        <inputEntry id="UnaryTests_0p5x85n">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0k18fp7">
+          <text>[17..17.30]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1kbz5hn">
+          <text>&gt;30</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05c5dtr">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_10ycohw">
+        <description>Termin am Nachmittag</description>
+        <inputEntry id="UnaryTests_03funyg">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1twcq2j">
+          <text>]17.30..17.45]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1am0nke">
+          <text>15</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0k0ld8p">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1rqysef">
+        <description>Feierabend</description>
+        <inputEntry id="UnaryTests_14l7797">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0l2baqw">
+          <text>]17.30..17.45]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vrypbo">
+          <text>&gt;15</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1dohcqt">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03shut6">
+        <description>Feierabend</description>
+        <inputEntry id="UnaryTests_13nq09p">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1qvq21s">
+          <text>&gt; 17.45</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0m8vr2r">
+          <text>&gt;= 0</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0xrebgi">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>

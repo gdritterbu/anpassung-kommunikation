@@ -77,7 +77,7 @@ An letzter Stelle können wir dem Teilnehmer im idealen Fall den Terminvorschlag
 ![Termin versenden](/images/send_appointment.PNG "Termin versenden")
 
 ## Demo
-Nach dem erfolgreichen Deployen des Prozesses, kann dieser über die Tasklist gestartet werden. Wenn man nun die Liste aktualisiert und zu “All tasks” navigiert, lässt sich ein Termin eingeben.
+Nach dem erfolgreichen Deployen des Prozesses, kann dieser über die Tasklist gestartet werden. Wenn man nun die Liste aktualisiert und zu `All tasks` navigiert, lässt sich ein Termin eingeben.
 
 ![Termin eingeben](/images/demo_form_1.PNG "Termin eingeben")
 
@@ -91,7 +91,7 @@ Falls alles den eigenen Erwartungen entspricht, kann der Prozess wieder in der T
 
 ![Teilnehmer hinzufügen](/images/demo_form_2.PNG "Teilnehmer hinzufügen")
 
-Sind die Daten valide, folgt der Prozess weiterhin dem Happy Path und versendet eine E-Mail an den vorher angegebenen Teilnehmer. Herzlichen Glückwunsch, der Prozess wurde erfolgreich abgeschlossen!
+Sind die Daten valide, folgt der Prozess weiterhin dem **Happy Path** und versendet eine E-Mail an den vorher angegebenen Teilnehmer. Herzlichen Glückwunsch, der Prozess wurde erfolgreich abgeschlossen!
 
 ![Versendete E-Mail](/images/demo_email.PNG "Versendete E-Mail")
 

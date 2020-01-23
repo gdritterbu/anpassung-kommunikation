@@ -76,6 +76,25 @@ An letzter Stelle können wir dem Teilnehmer im idealen Fall den Terminvorschlag
 
 ![Termin versenden](/images/send_appointment.PNG "Termin versenden")
 
+## Demo
+Nach dem erfolgreichen Deployen des Prozesses, kann dieser über die Tasklist gestartet werden. Wenn man nun die Liste aktualisiert und zu “All tasks” navigiert, lässt sich ein Termin eingeben.
+
+![Termin eingeben](/images/demo_form_1.PNG "Termin eingeben")
+
+Um anzuzeigen, wie weit der Prozess fortgeschritten ist und ob die Eingaben richtig waren, kann dieser über das Cockpit inklusive der übertragenen Daten angezeigt werden.
+
+![Teilnehmer hinzufügen](/images/demo_diagram_token.PNG "Teilnehmer hinzufügen")
+
+![Termindaten](/images/demo_table.PNG "Termindaten")
+
+Falls alles den eigenen Erwartungen entspricht, kann der Prozess wieder in der Tasklist weitergeführt werden. Der nächste Schritt beinhaltet das Hinzufügen eines Teilnehmers. Hierzu füllt man erneut ein Formular aus. Dabei ist zu beachten, dass möglichst reale Daten verwendet werden sollten, da ansonsten keine Benachrichtigung stattfinden kann.
+
+![Teilnehmer hinzufügen](/images/demo_form_2.PNG "Teilnehmer hinzufügen")
+
+Sind die Daten valide, folgt der Prozess weiterhin dem Happy Path und versendet eine E-Mail an den vorher angegebenen Teilnehmer. Herzlichen Glückwunsch, der Prozess wurde erfolgreich abgeschlossen!
+
+![Versendete E-Mail](/images/demo_email.PNG "Versendete E-Mail")
+
 ___
 
 _Diese Dokumentation ist Teil einer Projektarbeit im Rahmen der Veranstaltung “Auswahl und Anpassung von IT-Diensten” unter der Leitung von Frau Prof. Meister an der Technischen Hochschule Brandenburg._

@@ -46,6 +46,18 @@ Diese Outputs werden in einem XOR-Gateway ausgewertet, [siehe BPMN-Diagramm](#bp
 
 ![Terminverfügbarkeit](/images/sequent_flow_1_positive.PNG "Termin verfügbar") ![Termin prüfen](/images/sequent_flow_1_negative.PNG "Termin nicht verfügbar")
 
+In der DMN Tabelle sind Regeln für die Terminvergabe hinterlegt. Diese Regeln sollen sich am Unternehmensalltag orientieren. So ist es z.B. nur möglich Termine in der Kernarbeitszeit zu organisieren. Termine außerhalb der Kernarbeitszeit 8 Uhr - 18 Uhr oder in den allgemeinen Pausen (9-9.30 Uhr; 12-12.30 Uhr) werden nicht akzeptiert. Termine mit einer Dauer länger als 2 Stunden werden ebenfalls nicht akzeptiert.
+
+Bei der Termineingabe sind folgende Termindaten erforderlich:
+
+- Wochentag `int 1-7 (1 = Montag; 7 = Sontag)`
+- Uhrzeit `Long z.B. 9.30 (für 9.30 Uhr)`
+- Dauer `int z.B. 90 (90 Minuten)`
+
+Werden diese Konventionen verletzt ist eine Prüfung nicht möglich.
+
+![DMN Entscheidungstabelle](/images/dmn_tabelle_termin_dauer.svg "DMN Entscheidungstabelle")
+
 ### User-Task - Teilnehmer hinzufügen
 Nun kann ein Teilnehmer zum Termin hinzugefügt werden. Hierbei werden wieder in einem Formular die Daten des Teilnehmers eingegeben, damit diese im darauffolgenden Schritt überprüft werden können. Der Name ist für diese Überprüfung essentiell und die E-Mail-Adresse wird für das spätere Ausstellen des Terminvorschlages benötigt.
 

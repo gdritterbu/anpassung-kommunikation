@@ -1,5 +1,5 @@
 # Anpassung des ausgewählten Kommunikationstools am Beispiel "Terminerstellung mit externen Teilnehmern"
-Diese Dokumentation beschreibt die technische Implementierung einer Service-Orchestrierung des Prozesses “Terminerstellung mit externen Teilnehmern” mithilfe der Process Engine Camunda BPM. Aufgrund des Projektrahmens ist der Prozess “Terminerstellung mit externen Teilnehmern” Bestandteil eines fiktiven Unternehmens in Brandenburg an der Havel.
+Diese Dokumentation beschreibt die technische Implementierung einer Service-Orchestrierung des Prozesses “Terminerstellung mit externen Teilnehmern” mithilfe der Process Engine Camunda BPM. Im Kontext der Beschaffung einer Unternehmenskommunikationssoftware ist der Prozess “Terminerstellung mit externen Teilnehmern” Bestandteil eines fiktiven Unternehmens in Brandenburg an der Havel.
 
 Ziel der folgenden Service-Orchestrierung ist die Umsetzung folgender Punkte:
 - Umsetzung einer formularbasierte User-Aufgabe

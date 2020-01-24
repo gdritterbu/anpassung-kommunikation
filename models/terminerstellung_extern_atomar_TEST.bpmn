@@ -60,13 +60,12 @@
           <camunda:inputOutput>
             <camunda:inputParameter name="to">${Mail}</camunda:inputParameter>
             <camunda:inputParameter name="subject">Termin</camunda:inputParameter>
-            <camunda:inputParameter name="text">Lieber ${Name},
+            <camunda:inputParameter name="text">Liebe(r) ${Name},
 
 wir freuen uns dir verkünden zu können, dass ein Termin frei ist!
 
 Beste Grüße,
-Dein supertolles IT-Startup
-</camunda:inputParameter>
+Dein supertolles IT-Startup</camunda:inputParameter>
           </camunda:inputOutput>
           <camunda:connectorId>mail-send</camunda:connectorId>
         </camunda:connector>

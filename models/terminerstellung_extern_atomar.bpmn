@@ -92,7 +92,7 @@ bool;</camunda:script>
           <camunda:inputOutput>
             <camunda:inputParameter name="to">${Mail}</camunda:inputParameter>
             <camunda:inputParameter name="subject">Termin</camunda:inputParameter>
-            <camunda:inputParameter name="text">Lieber ${Name},
+            <camunda:inputParameter name="text">Liebe(r) ${Name},
 
 wir freuen uns dir verkünden zu können, dass ein Termin frei ist!
 

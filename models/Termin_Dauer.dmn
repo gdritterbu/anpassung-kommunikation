@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" id="Definitions_0awai3l" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.5.0">
-  <decision id="Decision_1e0udy5" name="Decision 1">
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_0awai3l" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.5.0">
+  <decision id="Decision_1e0udy5" name="Terminmöglichkeit">
+    <extensionElements>
+      <biodi:bounds x="358" y="124" width="180" height="80" />
+      <biodi:edge source="InputData_11zj1zg">
+        <biodi:waypoints x="255" y="282" />
+        <biodi:waypoints x="379" y="204" />
+      </biodi:edge>
+      <biodi:edge source="InputData_0lrwecx">
+        <biodi:waypoints x="439" y="288" />
+        <biodi:waypoints x="433" y="204" />
+      </biodi:edge>
+      <biodi:edge source="InputData_1iuxz1y">
+        <biodi:waypoints x="642" y="283" />
+        <biodi:waypoints x="513" y="204" />
+      </biodi:edge>
+    </extensionElements>
+    <informationRequirement>
+      <requiredInput href="#InputData_11zj1zg" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_0lrwecx" />
+    </informationRequirement>
+    <informationRequirement>
+      <requiredInput href="#InputData_1iuxz1y" />
+    </informationRequirement>
     <decisionTable id="decisionTable_1">
       <input id="input_1" label="Wochentag">
         <inputExpression id="inputExpression_1" typeRef="integer">
@@ -273,36 +297,6 @@
           <text>false</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0omdg28">
-        <description>Termin am Vormittag</description>
-        <inputEntry id="UnaryTests_0ylyl5u">
-          <text>[1..5]</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_1p2bpd8">
-          <text>11</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0k5tgzh">
-          <text>[15..60]</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_019impu">
-          <text>true</text>
-        </outputEntry>
-      </rule>
-      <rule id="DecisionRule_09zx43q">
-        <description>Kein Termin in der Pause</description>
-        <inputEntry id="UnaryTests_19xohga">
-          <text>[1..5]</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0icq82e">
-          <text>11</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0octpys">
-          <text>&gt;60</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0vk7xnb">
-          <text>false</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_1nyemqz">
         <description>Diese Uhrzeit existiert nicht</description>
         <inputEntry id="UnaryTests_1hvr1l3">
@@ -324,7 +318,7 @@
           <text>[1..5]</text>
         </inputEntry>
         <inputEntry id="UnaryTests_13nycll">
-          <text>]11..11.30]</text>
+          <text>[11..11.3]</text>
         </inputEntry>
         <inputEntry id="UnaryTests_05zqj79">
           <text>[15..30]</text>
@@ -339,7 +333,7 @@
           <text>[1..5]</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0jlnkfg">
-          <text>]11..11.30]</text>
+          <text>[11..11.3]</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0isw6yz">
           <text>&gt; 30</text>
@@ -384,12 +378,27 @@
           <text>[1..5]</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0tnc1io">
-          <text>]11.45..12]</text>
+          <text>]11.45..11.59]</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0b8qxfu">
           <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1k687rl">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0lzp958">
+        <description>Uhrzeit existiert nicht und Mittagspause</description>
+        <inputEntry id="UnaryTests_0zyz3wf">
+          <text>[1..5]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1smu3al">
+          <text>[11.60..12.30[</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18g0gai">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0cx326x">
           <text>false</text>
         </outputEntry>
       </rule>
@@ -399,7 +408,7 @@
           <text>[1..5]</text>
         </inputEntry>
         <inputEntry id="UnaryTests_12pm9ce">
-          <text>]12..12.59]</text>
+          <text>[12.3..12.59]</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qywvwo">
           <text>[15..120]</text>
@@ -414,7 +423,7 @@
           <text>[1..5]</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0j7uxq8">
-          <text>]12..12.59]</text>
+          <text>[12.3..12.59]</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1cdr8q6">
           <text>&gt;120</text>
@@ -725,4 +734,19 @@
       </rule>
     </decisionTable>
   </decision>
+  <inputData id="InputData_11zj1zg" name="Wochentag">
+    <extensionElements>
+      <biodi:bounds x="156" y="282" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_0lrwecx" name="Beginn">
+    <extensionElements>
+      <biodi:bounds x="378" y="288" width="125" height="45" />
+    </extensionElements>
+  </inputData>
+  <inputData id="InputData_1iuxz1y" name="Dauer in Minuten">
+    <extensionElements>
+      <biodi:bounds x="617" y="283" width="125" height="45" />
+    </extensionElements>
+  </inputData>
 </definitions>
